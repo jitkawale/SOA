@@ -1,0 +1,81 @@
+<aura:component controller="AccountList_CC" >
+	<aura:attribute name="AccountList" type="Account[]" description="" />    
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}"/>
+        
+    <article class="slds-card">
+        <div class="slds-card__header slds-grid">
+            <header class="slds-media slds-media_center slds-has-flexi-truncate">			
+                <div class="slds-media__body">
+                    <h2>
+                        
+                        <span class="slds-text-heading_small" style="font-weight:800;margin-top:15px">Recent Accounts</span>
+                        
+                    </h2>
+                </div>	
+            </header>
+        </div>
+    </article>
+   <article class="slds-card" style="border-color: white;">       
+        
+        <div class="slds-card__body slds-card__body_inner">          
+            
+            <div class="slds-m-top_medium" >                
+                <div class="slds-size--1-of-1 slds-padding-right slds-grid slds-wrap">
+		            <table class=" slds-table slds-table_bordered slds-table_cell-buffer"	style="border-left: 1px solid beige; border-right: 1px solid beige;">
+		                <!-- HEADER -->
+		                <thead>
+		                    <tr class="slds-text-title_caps">
+		                        <th scope="col">
+		                            <div class="slds-truncate" title="Start Date">#</div>
+		                        </th> 
+		                        <th scope="col">
+		                            <div class="slds-truncate" title="Name">Account Name</div>
+		                        </th>
+		                        <th scope="col">
+		                            <div class="slds-truncate" title="Date">Created Date</div>
+		                        </th>
+		                         <th scope="col">
+		                            <div class="slds-truncate" title="Date">Last Modified Date</div>
+		                        </th>		                        
+		                    </tr>
+		                </thead>
+		                <!-- BODY -->
+		                <tbody>
+		                    <aura:iteration var="acc" items="{!v.AccountList}" indexVar="index">
+								<tr>
+			                        <td class="relationship-row-cell">
+			                			<div class="slds-cell-shrink"> 
+			                				{!index + 1}
+			                			</div>
+			                		</td>
+			                		<td class="relationship-row-cell">
+			                			<div class="slds-cell-shrink"> 
+			                				<ui:outputText value="{!acc.Name}"/>
+			                			</div>
+			                		</td>
+			                		<td class="relationship-row-cell">
+			                			<div class="slds-cell-shrink"> 
+			                				<ui:outputDate value="{!acc.CreatedDate}"/>
+			                			</div>
+			                		</td>
+			                		<td class="relationship-row-cell">
+			                			<div class="slds-cell-shrink"> 
+			                				<ui:outputDate value="{!acc.LastModifiedDate}"/>
+			                			</div>
+			                		</td>			                		              		
+			                	</tr>
+		                    </aura:iteration>
+		                </tbody>
+		            </table> 
+		        </div>					
+                <br/>
+                
+                <div class="slds-clearfix">
+                                    
+                    
+                </div>
+            </div>
+        </div>       
+    </article>
+    
+</aura:component>
